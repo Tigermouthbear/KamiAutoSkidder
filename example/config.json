@@ -1,0 +1,14 @@
+{
+    "input": "kamiblue-1.1.2-beta-release.jar",
+    "output": "AutoSkidded-1.0.jar",
+    "name": "AutoSkidded",
+    "version": "1.0",
+    "appid": "638403216278683661",
+    "chat-append": {
+        "kanji": "\u0073\u1d0b\u026a\u1d05",
+        "blue": "\u1d00\u1d1c\u1d1b\u1d0f\u0073\u1d0b\u026a\u1d05",
+        "japanontop": "tiger ontop",
+        "kamiontop": "autoskid ontop",
+        "website": "github.com/Tigermouthbear/KamiAutoSkidder"
+    }
+}
