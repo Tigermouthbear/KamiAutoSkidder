@@ -1,4 +1,4 @@
-package me.tigermouthbear.kamiautoskidder
+package dev.tigr.kamiautoskidder
 
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassWriter

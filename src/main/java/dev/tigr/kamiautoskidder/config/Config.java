@@ -1,4 +1,4 @@
-package me.tigermouthbear.kamiautoskidder.config;
+package dev.tigr.kamiautoskidder.config;
 
 import java.util.ArrayList;
 

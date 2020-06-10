@@ -1,4 +1,4 @@
-package me.tigermouthbear.kamiautoskidder
+package dev.tigr.kamiautoskidder
 
 import java.io.File
 import kotlin.system.exitProcess

@@ -1,8 +1,8 @@
-package me.tigermouthbear.kamiautoskidder
+package dev.tigr.kamiautoskidder
 
-import me.tigermouthbear.kamiautoskidder.config.ConfigReader
-import me.tigermouthbear.kamiautoskidder.config.DictionaryConfig
-import me.tigermouthbear.kamiautoskidder.config.StringConfig
+import dev.tigr.kamiautoskidder.config.ConfigReader
+import dev.tigr.kamiautoskidder.config.DictionaryConfig
+import dev.tigr.kamiautoskidder.config.StringConfig
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.ClassNode
 import org.objectweb.asm.tree.FieldNode
@@ -67,22 +67,48 @@ object KamiAutoSkidder {
         // redefine static vars
         mainClass.fields.forEach { field: FieldNode ->
             when (field.name) {
-                "MODNAME" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, MODNAME)
-                "MODID" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, MODID)
-                "MODVER" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, MODVER)
-                "MODVERSMALL" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, MODVER)
-                "KAMI_CONFIG_NAME_DEFAULT" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, MODCONFIG)
-                "APPID" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, APPID)
-                "KAMI_KANJI" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, chatDict.value.getString("kanji"))
-                "KAMI_BLUE" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, chatDict.value.getString("blue"))
-                "KAMI_JAPANESE_ONTOP" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, chatDict.value.getString("japanontop"))
-                "KAMI_ONTOP" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, chatDict.value.getString("kamiontop"))
-                "KAMI_WEBSITE" -> valueMap[field.value as String] = AsmHelper.setStringVal(field, chatDict.value.getString("website"))
+                "MODNAME" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, MODNAME)
+                "MODID" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, MODID)
+                "MODVER" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, MODVER)
+                "MODVERSMALL" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, MODVER)
+                "KAMI_CONFIG_NAME_DEFAULT" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, MODCONFIG)
+                "APPID" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(field, APPID)
+                "KAMI_KANJI" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(
+                        field,
+                        chatDict.value.getString("kanji")
+                    )
+                "KAMI_BLUE" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(
+                        field,
+                        chatDict.value.getString("blue")
+                    )
+                "KAMI_JAPANESE_ONTOP" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(
+                        field,
+                        chatDict.value.getString("japanontop")
+                    )
+                "KAMI_ONTOP" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(
+                        field,
+                        chatDict.value.getString("kamiontop")
+                    )
+                "KAMI_WEBSITE" -> valueMap[field.value as String] =
+                    AsmHelper.setStringVal(
+                        field,
+                        chatDict.value.getString("website")
+                    )
             }
         }
 
         // redefine ldcs
-        for(cn in AsmHelper.getClassNodes().values.stream().filter{cn -> !restrictedClasses.contains(cn.name)}) {
+        for(cn in AsmHelper.getClassNodes().values.stream().filter{ cn -> !restrictedClasses.contains(cn.name)}) {
             for (mn in cn.methods) {
                 for (ain in mn.instructions.toArray()) {
                     if (ain.opcode == Opcodes.LDC) {
